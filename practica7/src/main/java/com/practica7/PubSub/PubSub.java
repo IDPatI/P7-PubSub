@@ -37,6 +37,8 @@ public class PubSub {
             e.printStackTrace();
         }
         System.out.println("-Publisher iniciado-");
+
+        //Como un monton se nos van a conectar, necesitamos hacer un thread para atender a cada uno
         while (true) {
             try {
                 socket = serverSocket.accept();

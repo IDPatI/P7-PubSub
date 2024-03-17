@@ -26,14 +26,14 @@ public class PubSubThread extends Thread{
     public void run() {
         InputStream inp = null;
         BufferedReader brinp = null;
-        //Nada de out, crear una clase totalmente nueva para el subscriber
+        //Nada de "out", crear una clase totalmente nueva para el subscriber
         //Si el mensaje es de tipo "subscriber", el PubSub, lo añades al Hashmap de subscripciones
         //Entonces creas un nuevo socket para ir mandandole mensajes
 
-        //Primero le mandas todo lo de la base de datos y luego le mandas lo que vaya llegando
+        //Primero le mandas todo lo que esta almacenado en la base de datos y luego le mandas lo que vaya llegando
 
-        //No vas a poder devolver mensajes si intentas devolver el mensaje con el socket actual
-        //Si lo logras pues lo puedes hacer de esa forma, si no, checa como lo hace publisher para mandar sus mensajes
+        //No vas a poder devolver mensajes si intentas devolver el mensaje con el socket actual "out"
+        //Si lo logras pues lo puedes hacer de esa forma, si no, checa como lo hace PublisherCamion para mandar sus mensajes
 
         //Obtencion del puerto e ip        
         //int port = socket.getPort();
@@ -67,7 +67,9 @@ public class PubSubThread extends Thread{
                         break;
                     case "subscriber":
                         //El subscriber solo manda un mensaje, donde dice a que canales quiere estar subscrito
-                        //Luego, el va a estar esperando mensajes, el primero siempre es de todo lo que hay en la base de datos
+                        //{tipo: "subscriber", subscribirse: ["temperatura", "l_gasolina"]}
+                        //*Como veas tu el formato la verdda*
+                        //Luego, el va a estar esperando mensajes; el primero siempre es de todo lo que hay en la base de datos
                         //Los siguientes, los publishers van a detonar el envio en enviarMensajes
                         break;
                     default:
